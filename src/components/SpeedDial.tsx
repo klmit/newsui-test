@@ -8,7 +8,7 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import CloseIcon from "@mui/icons-material/Close";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 //
-import { styles } from "./styles";
+import { styles } from "styles/speeddial.styles";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { appActions } from "store/slices/app.slice";
 
