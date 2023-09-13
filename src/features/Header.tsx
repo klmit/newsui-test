@@ -4,9 +4,9 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 import AdbIcon from "@mui/icons-material/Adb";
 import SearchIcon from "@mui/icons-material/Search";
+import NewspaperIcon from "@mui/icons-material/Newspaper";
 //
 import { styles } from "shared/styles/Header.style";
 import { Search, SearchIconWrapper, StyledInputBase } from "components/Search";
@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ ...styles.logoIcon }} />
+          <NewspaperIcon sx={{ ...styles.logoIcon }} />
           <Typography
             variant="h6"
             noWrap

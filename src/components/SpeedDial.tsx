@@ -30,21 +30,19 @@ export const SpeedDialComponent: React.FC = () => {
   };
 
   return (
-    <Box sx={{ ...styles.global }}>
-      <SpeedDial
-        ariaLabel="SpeedDial"
-        sx={{ ...styles.speedial }}
-        icon={<SpeedDialIcon openIcon={<CloseIcon />} />}
-      >
-        {actions.map((action) => (
-          <SpeedDialAction
-            key={action.name}
-            icon={action.name === "Theme" ? iconTheme : action.icon}
-            tooltipTitle={action.name}
-            onClick={() => action.name === "Theme" && setTheme()}
-          />
-        ))}
-      </SpeedDial>
-    </Box>
+    <SpeedDial
+      ariaLabel="SpeedDial"
+      sx={{ ...styles.speedial }}
+      icon={<SpeedDialIcon openIcon={<CloseIcon />} />}
+    >
+      {actions.map((action) => (
+        <SpeedDialAction
+          key={action.name}
+          icon={action.name === "Theme" ? iconTheme : action.icon}
+          tooltipTitle={action.name}
+          onClick={() => action.name === "Theme" && setTheme()}
+        />
+      ))}
+    </SpeedDial>
   );
 };

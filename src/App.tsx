@@ -9,7 +9,7 @@ import { SpeedDialComponent } from "components/SpeedDial";
 import { Header } from "features/Header";
 import { BrowserRouter } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { UseRouter } from "hooks/router";
+import { UseRouter } from "shared/hooks/router";
 import { Notify } from "features/Notify";
 import { darkMode, lightMode } from "utils/themes";
 

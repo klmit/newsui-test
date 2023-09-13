@@ -3,5 +3,6 @@ export type AppInitialState = {
   isDarkMode: boolean;
   errorMessage: string;
   infoMessage: string;
+  dialogMesage: string;
   successMessage: string;
 };

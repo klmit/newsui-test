@@ -1,10 +1,10 @@
 export const pages = [
   {
-    name: "Новости",
+    name: "News",
     href: "/news",
   },
   {
-    name: "О нас",
+    name: "About us",
     href: "/about",
   },
 ];

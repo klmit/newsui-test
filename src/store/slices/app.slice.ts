@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AppInitialState } from "../types/app.types";
+import { AppInitialState } from "types/app.types";
 
 const initialState: AppInitialState = {
   isLoading: false,
@@ -7,6 +7,7 @@ const initialState: AppInitialState = {
   errorMessage: "",
   infoMessage: "",
   successMessage: "",
+  dialogMesage: "",
 };
 
 const appSlice = createSlice({
@@ -27,6 +28,9 @@ const appSlice = createSlice({
     },
     setInfoMessage: (state, action) => {
       state.infoMessage = action.payload;
+    },
+    setdialogMesage: (state, action) => {
+      state.dialogMesage = action.payload;
     },
   },
 });
