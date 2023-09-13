@@ -42,8 +42,8 @@ export const NewsPage: React.FC = () => {
       (item) => item
     );
 
-    if (isNew) dispatch(setItems(response.concat(items)));
-    else dispatch(setItems(response));
+    if (isNew) dispatch(setItems(response.concat(items).sort((a, b) => b - a)));
+    else dispatch(setItems(response.sort((a, b) => b - a)));
   };
 
   const updateItems = () => {
@@ -103,9 +103,7 @@ export const NewsPage: React.FC = () => {
       </Box>
       <Paper>
         {items.length ? (
-          items
-            .filter((item) => item.time)
-            .map((item) => <Item key={item.id} item={item} />)
+          items.map((item) => <Item key={item.id} item={item} />)
         ) : (
           <Skeleton variant="rectangular" width="100%">
             {news_mock.map((item, i) => (
