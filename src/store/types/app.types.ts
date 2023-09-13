@@ -1,4 +1,7 @@
 export type AppInitialState = {
   isLoading: boolean;
-  isDarkTheme: boolean;
+  isDarkMode: boolean;
+  errorMessage: string;
+  infoMessage: string;
+  successMessage: string;
 };

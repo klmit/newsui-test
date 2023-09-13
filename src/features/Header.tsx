@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import AdbIcon from "@mui/icons-material/Adb";
 import SearchIcon from "@mui/icons-material/Search";
 //
-import { styles } from "styles/header.styles";
+import { styles } from "shared/styles/Header.style";
 import { Search, SearchIconWrapper, StyledInputBase } from "components/Search";
 import { pages } from "shared/mocks/header.mock";
 import { useLocation } from "react-router";

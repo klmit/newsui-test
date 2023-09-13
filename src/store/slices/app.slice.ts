@@ -3,7 +3,10 @@ import { AppInitialState } from "../types/app.types";
 
 const initialState: AppInitialState = {
   isLoading: false,
-  isDarkTheme: false,
+  isDarkMode: false,
+  errorMessage: "",
+  infoMessage: "",
+  successMessage: "",
 };
 
 const appSlice = createSlice({
@@ -11,10 +14,19 @@ const appSlice = createSlice({
   initialState,
   reducers: {
     setDarkTheme: (state, action) => {
-      state.isDarkTheme = action.payload;
+      state.isDarkMode = action.payload;
     },
     setLoading: (state, action) => {
       state.isLoading = action.payload;
+    },
+    setErrorMessage: (state, action) => {
+      state.errorMessage = action.payload;
+    },
+    setSuccessMessage: (state, action) => {
+      state.successMessage = action.payload;
+    },
+    setInfoMessage: (state, action) => {
+      state.infoMessage = action.payload;
     },
   },
 });

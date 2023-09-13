@@ -8,28 +8,25 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import CloseIcon from "@mui/icons-material/Close";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 //
-import { styles } from "styles/speeddial.styles";
+import { styles } from "shared/styles/SpeedDial.style";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { appActions } from "store/slices/app.slice";
 
 const actions = [{ icon: <FileCopyIcon />, name: "Theme", click: () => {} }];
 
-const initialTheme = (isDarkTheme: boolean): React.ReactElement => {
-  return isDarkTheme ? <WbSunnyIcon /> : <DarkModeIcon />;
+const initialTheme = (isDarkMode: boolean): React.ReactElement => {
+  return isDarkMode ? <WbSunnyIcon /> : <DarkModeIcon />;
 };
 
 export const SpeedDialComponent: React.FC = () => {
   const dispath = useAppDispatch();
-  const { isDarkTheme } = useAppSelector((state) => state.app);
+  const { isDarkMode } = useAppSelector((state) => state.app);
   const { setDarkTheme } = appActions;
 
-  const iconTheme = React.useMemo(
-    () => initialTheme(isDarkTheme),
-    [isDarkTheme]
-  );
+  const iconTheme = React.useMemo(() => initialTheme(isDarkMode), [isDarkMode]);
 
   const setTheme = (): void => {
-    dispath(setDarkTheme(!isDarkTheme));
+    dispath(setDarkTheme(!isDarkMode));
   };
 
   return (

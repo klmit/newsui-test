@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 //
 import "./App.css";
@@ -7,25 +7,33 @@ import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { appActions } from "./store/slices/app.slice";
 import { SpeedDialComponent } from "components/SpeedDial";
 import { Header } from "features/Header";
-import { BrowserRouter, useLocation } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { UseRouter } from "hooks/router";
+import { Notify } from "features/Notify";
+import { darkMode, lightMode } from "utils/themes";
 
 function App() {
-  const { isDarkTheme } = useAppSelector((state) => state.app);
-  const dispath = useAppDispatch();
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const { isDarkMode } = useAppSelector((state) => state.app);
+  const dispatch = useAppDispatch();
   const { setDarkTheme } = appActions;
+  const { setInfoMessage } = appActions;
 
-  const theme = React.useMemo(() => {
-    dispath(setDarkTheme(isDarkTheme));
-
-    return createTheme({
-      palette: { mode: isDarkTheme ? "dark" : "light" },
-    });
-  }, [isDarkTheme]);
+  React.useEffect(() => {
+    dispatch(setDarkTheme(prefersDarkMode));
+    dispatch(
+      setInfoMessage(
+        `Тема оформления была изменена на системный: ${
+          prefersDarkMode ? "Темный" : "Светлый"
+        }`
+      )
+    );
+  }, [prefersDarkMode]);
 
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={isDarkMode ? darkMode : lightMode}>
         <CssBaseline />
         <BrowserRouter>
           <main>
@@ -34,6 +42,7 @@ function App() {
             <SpeedDialComponent />
           </main>
         </BrowserRouter>
+        <Notify />
       </ThemeProvider>
     </>
   );
