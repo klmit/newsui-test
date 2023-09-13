@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  Card,
-  CircularProgress,
-  Paper,
-  Skeleton,
-} from "@mui/material";
+import { Box, Button, CircularProgress, Paper, Skeleton } from "@mui/material";
 //
 import { getItemIds, getItems } from "shared/api/routes/news";
 import { styles } from "shared/styles/NewsPage.style";
@@ -64,7 +57,6 @@ export const NewsPage: React.FC = () => {
     const isNearBottom = scrollTop + clientHeight >= scrollHeight;
 
     if (isNearBottom) {
-      console.log(items.length);
       getItemsHandler(itemIds.slice(items.length, items.length + 10), true);
       window.scrollTo({ top: scrollTop - 400 });
     }

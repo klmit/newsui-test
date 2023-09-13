@@ -12,13 +12,13 @@ import { Favorite, Comment } from "@mui/icons-material";
 import { NewsItem } from "types/news.types";
 import { Link } from "react-router-dom";
 
-const canculateDate = (unixTime: number): string => {
+export const canculateDate = (unixTime: number): string => {
   const date = new Date(unixTime * 1000);
 
   return `${date.getDay()}.${date.getMonth()}.${date.getFullYear()} | ${date.getHours()}:${date.getMinutes()}`;
 };
 
-const getSiteName = (url: string): string => {
+export const getSiteName = (url: string): string => {
   return url && url.split("/")[2];
 };
 
@@ -48,7 +48,6 @@ export const Item: React.FC<Props> = ({ item }) => {
         marginTop: 0.5,
       }}
       variant="outlined"
-      id={id.toString()}
     >
       <CardContent>
         <Typography
@@ -86,8 +85,7 @@ export const Item: React.FC<Props> = ({ item }) => {
           </Button>
         </Box>
         <Box sx={{ fontStyle: "italic", fontSize: 14, marginRight: 2 }}>
-          {type}
-          {date}
+          {type} | {date}
         </Box>
       </CardActions>
     </Card>

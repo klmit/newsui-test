@@ -1,3 +1,5 @@
+import { Box } from "@mui/material";
+
 export const AboutPage: React.FC = () => {
-  return <div>AboutPage</div>;
+  return <Box sx={{ textAlign: "center" }}>Test task for Tunduk company</Box>;
 };

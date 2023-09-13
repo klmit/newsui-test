@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import AdbIcon from "@mui/icons-material/Adb";
 import SearchIcon from "@mui/icons-material/Search";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 //
@@ -12,10 +11,36 @@ import { styles } from "shared/styles/Header.style";
 import { Search, SearchIconWrapper, StyledInputBase } from "components/Search";
 import { pages } from "shared/mocks/header.mock";
 import { useLocation } from "react-router";
+import { Paper } from "@mui/material";
+import { useAppSelector } from "store/hooks";
+import { Link } from "react-router-dom";
+
+type SearchType = {
+  title: string;
+  id: number;
+};
 
 export const Header: React.FC = () => {
   const [searchText, setSearchText] = React.useState<string>("");
+  const [searchResult, setSearchResult] = React.useState<SearchType[]>([]);
   const location = useLocation();
+
+  const { items } = useAppSelector((state) => state.news);
+
+  React.useEffect(() => {
+    if (!searchText) return setSearchResult([]);
+
+    const result: SearchType[] = [];
+
+    items.map((item) => {
+      if (item.title.toLocaleLowerCase().includes(searchText.toLowerCase())) {
+        result.push({ title: item.title, id: item.id });
+      }
+    });
+
+    setSearchResult(result);
+  }, [searchText]);
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -46,18 +71,47 @@ export const Header: React.FC = () => {
             ))}
           </Box>
           {location.pathname === pages[0].href && (
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search news..."
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-                inputProps={{ "aria-label": "search" }}
-                style={{ width: searchText && 400 }}
-              />
-            </Search>
+            <Box>
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search news..."
+                  value={searchText}
+                  onChange={(e) => setSearchText(e.target.value)}
+                  inputProps={{ "aria-label": "search" }}
+                  style={{ width: searchText && 400 }}
+                />
+              </Search>
+              {searchResult.length ? (
+                <Paper
+                  sx={{
+                    position: "absolute",
+                    padding: 1,
+                    zIndex: 999,
+                  }}
+                >
+                  {searchResult.map((item) => (
+                    <Box
+                      key={item.id}
+                      sx={{
+                        marginTop: 2,
+                      }}
+                    >
+                      <Link
+                        to={"/item/" + item.id}
+                        onClick={() => setSearchText("")}
+                      >
+                        {item.title}
+                      </Link>
+                    </Box>
+                  ))}
+                </Paper>
+              ) : (
+                ""
+              )}
+            </Box>
           )}
         </Toolbar>
       </Container>

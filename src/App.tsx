@@ -24,8 +24,8 @@ function App() {
     dispatch(setDarkTheme(prefersDarkMode));
     dispatch(
       setInfoMessage(
-        `Тема оформления была изменена на системный: ${
-          prefersDarkMode ? "Темный" : "Светлый"
+        `The theme has been changed to system: ${
+          prefersDarkMode ? "Dark" : "Light"
         }`
       )
     );
