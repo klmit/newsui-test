@@ -107,6 +107,7 @@ export const NewsPage: React.FC = () => {
             sx={{ height: 30 }}
             onClick={updateItems}
             endIcon={<ReplayIcon />}
+            disabled={rendering}
           >
             {rendering ? "Rendering..." : "Update"}
           </Button>
