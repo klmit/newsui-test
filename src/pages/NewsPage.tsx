@@ -105,7 +105,7 @@ export const NewsPage: React.FC = () => {
         {items.length ? (
           items.map((item) => <Item key={item.id} item={item} />)
         ) : (
-          <Skeleton variant="rectangular" width="100%">
+          <Skeleton variant="rounded" animation="wave" width="100%">
             {news_mock.map((item, i) => (
               <Item key={item.id} item={item} />
             ))}
