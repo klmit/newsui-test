@@ -45,7 +45,8 @@ export const NewsPage: React.FC = () => {
       (item) => item
     );
 
-    if (isNew) dispatch(setItems(response.concat(items).sort((a, b) => b - a)));
+    if (isNew)
+      dispatch(setItems([...items, ...response].sort((a, b) => b - a)));
     else dispatch(setItems(response.sort((a, b) => b - a)));
     setRendering(false);
   };
