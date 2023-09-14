@@ -124,7 +124,7 @@ export const NewsPage: React.FC = () => {
           </Skeleton>
         )}
       </Paper>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box sx={{ display: "flex", justifyContent: "center", margin: "40px 0" }}>
         {isLoading && <CircularProgress />}
       </Box>
     </Box>
