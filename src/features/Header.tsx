@@ -98,6 +98,8 @@ export const Header: React.FC = () => {
                       key={item.id}
                       sx={{
                         marginTop: 2,
+                        paddingLeft: 2,
+                        borderLeft: "2px solid orange",
                       }}
                     >
                       <Link
