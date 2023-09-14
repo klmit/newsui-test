@@ -27,6 +27,7 @@ export const DetailsPage: React.FC = () => {
   useEffect(() => {
     const news = items.find((item) => item.id === Number(id));
     setItem(news || items[0]);
+    document.title = news?.title || "News";
   }, [id]);
 
   if (!item) return <Typography component="h1">Nothing here</Typography>;

@@ -67,6 +67,8 @@ export const NewsPage: React.FC = () => {
     const timeout = setInterval(updateItems, 60000);
     getItemsIdsHandler();
 
+    document.title = "News";
+
     return () => clearInterval(timeout);
   }, []);
 
