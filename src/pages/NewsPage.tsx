@@ -102,17 +102,14 @@ export const NewsPage: React.FC = () => {
         {isLoading ? (
           <CircularProgress />
         ) : (
-          <Box>
-            <span>{rendering && "Rendering..."}</span>
-            <Button
-              variant="contained"
-              sx={{ height: 30 }}
-              onClick={updateItems}
-              endIcon={<ReplayIcon />}
-            >
-              Update
-            </Button>
-          </Box>
+          <Button
+            variant="contained"
+            sx={{ height: 30 }}
+            onClick={updateItems}
+            endIcon={<ReplayIcon />}
+          >
+            {rendering ? "Rendering..." : "Update"}
+          </Button>
         )}
       </Box>
       <Paper>
