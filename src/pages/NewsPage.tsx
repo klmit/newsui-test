@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Button, CircularProgress, Paper, Skeleton } from "@mui/material";
+import ReplayIcon from "@mui/icons-material/Replay";
 //
 import { getItemIds, getItems } from "shared/api/routes/news";
 import { styles } from "shared/styles/NewsPage.style";
@@ -96,7 +97,12 @@ export const NewsPage: React.FC = () => {
         {isLoading ? (
           <CircularProgress />
         ) : (
-          <Button variant="contained" sx={{ height: 30 }} onClick={updateItems}>
+          <Button
+            variant="contained"
+            sx={{ height: 30 }}
+            onClick={updateItems}
+            endIcon={<ReplayIcon />}
+          >
             Update
           </Button>
         )}
