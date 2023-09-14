@@ -20,7 +20,7 @@ export const DetailsPage: React.FC = () => {
     const bool = window.confirm("You wan't redirect to: " + item.url);
 
     if (bool) {
-      window.location.href = item.url;
+      window.open(item.url, "_blank")?.focus();
     }
   };
 
@@ -28,8 +28,12 @@ export const DetailsPage: React.FC = () => {
     const news = items.find((item) => item.id === Number(id));
     setItem(news || items[0]);
   }, [id]);
+
+  if (!item) return <Typography component="h1">Nothing here</Typography>;
+
   const siteName = getSiteName(item.url);
   const date = canculateDate(item.time);
+
   return (
     <>
       <Box sx={{ width: "80%", margin: "20px auto" }}>
