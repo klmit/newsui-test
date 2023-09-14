@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import SearchIcon from "@mui/icons-material/Search";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
+import InsertLinkIcon from "@mui/icons-material/InsertLink";
 //
 import { styles } from "shared/styles/Header.style";
 import { Search, SearchIconWrapper, StyledInputBase } from "components/Search";
@@ -102,8 +103,9 @@ export const Header: React.FC = () => {
                       <Link
                         to={"/item/" + item.id}
                         onClick={() => setSearchText("")}
+                        style={{ color: "darkgray" }}
                       >
-                        {item.title}
+                        {item.title} <InsertLinkIcon />
                       </Link>
                     </Box>
                   ))}
