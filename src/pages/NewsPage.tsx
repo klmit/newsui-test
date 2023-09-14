@@ -29,6 +29,7 @@ export const NewsPage: React.FC = () => {
   const { setItemIds, setItems } = newsActions;
   const { setSuccessMessage } = appActions;
   const [updatedCount, setUpdatedCount] = React.useState<number>(0);
+  const [rendering, setRendering] = React.useState<boolean>(false);
 
   const getItemsIdsHandler = async () => {
     try {
@@ -37,6 +38,7 @@ export const NewsPage: React.FC = () => {
     } catch (e) {}
   };
   const getItemsHandler = async (itemsId: number[], isNew?: boolean) => {
+    setRendering(true);
     const requestData = promiseWrapper(itemsId);
 
     const response: any[] = (await Promise.all(requestData)).filter(
@@ -45,6 +47,7 @@ export const NewsPage: React.FC = () => {
 
     if (isNew) dispatch(setItems(response.concat(items).sort((a, b) => b - a)));
     else dispatch(setItems(response.sort((a, b) => b - a)));
+    setRendering(false);
   };
 
   const updateItems = () => {
@@ -99,14 +102,17 @@ export const NewsPage: React.FC = () => {
         {isLoading ? (
           <CircularProgress />
         ) : (
-          <Button
-            variant="contained"
-            sx={{ height: 30 }}
-            onClick={updateItems}
-            endIcon={<ReplayIcon />}
-          >
-            Update
-          </Button>
+          <Box>
+            <span>{rendering && "Rendering..."}</span>
+            <Button
+              variant="contained"
+              sx={{ height: 30 }}
+              onClick={updateItems}
+              endIcon={<ReplayIcon />}
+            >
+              Update
+            </Button>
+          </Box>
         )}
       </Box>
       <Paper>

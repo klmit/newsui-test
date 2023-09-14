@@ -15,7 +15,10 @@ import { Link } from "react-router-dom";
 export const canculateDate = (unixTime: number): string => {
   const date = new Date(unixTime * 1000);
 
-  return `${date.getDay()}.${date.getMonth()}.${date.getFullYear()} | ${date.getHours()}:${date.getMinutes()}`;
+  const minutes =
+    date.getMinutes() < 9 ? `0${date.getMinutes()}` : date.getMinutes();
+
+  return `${date.getDay()}.${date.getMonth()}.${date.getFullYear()} | ${date.getHours()}:${minutes}`;
 };
 
 export const getSiteName = (url: string): string => {
