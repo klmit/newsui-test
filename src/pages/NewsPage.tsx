@@ -49,11 +49,11 @@ export const NewsPage: React.FC = () => {
       dispatch(setItems([...items, ...response].sort((a, b) => b - a)));
     else dispatch(setItems(response.sort((a, b) => b - a)));
     setRendering(false);
+    dispatch(setSuccessMessage("Data updated successfully!"));
   };
 
   const updateItems = () => {
     getItemsIdsHandler();
-    dispatch(setSuccessMessage("Data updated successfully!"));
     setUpdatedCount((prev) => prev + 1);
   };
 
