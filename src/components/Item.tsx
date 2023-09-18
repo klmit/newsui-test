@@ -18,7 +18,7 @@ export const canculateDate = (unixTime: number): string => {
   const minutes =
     date.getMinutes() < 9 ? `0${date.getMinutes()}` : date.getMinutes();
 
-  return `${date.getDay()}.${date.getMonth()}.${date.getFullYear()} | ${date.getHours()}:${minutes}`;
+  return `${date.toLocaleDateString()} | ${date.getHours()}:${minutes}`;
 };
 
 export const getSiteName = (url: string): string => {
